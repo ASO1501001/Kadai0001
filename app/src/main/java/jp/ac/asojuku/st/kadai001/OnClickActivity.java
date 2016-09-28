@@ -3,11 +3,15 @@ package jp.ac.asojuku.st.kadai001;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class OnClickActivity extends AppCompatActivity
 implements View.OnClickListener{
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +36,18 @@ implements View.OnClickListener{
 
         // テキストビューの表示はデフォルトは不正解にしてあるので、正解時に表示を変更
 
+        if (correctWord.equals(preIntent.getStringExtra(keyword)) ){
+
+            TextView textView = (TextView)findViewById(R.id.tvAnsMsg);
+
+            textView.setText(R.string.seikaiMsg);
+        }
 
     }
 
     // 戻るボタンの動作
     @Override
     public void onClick(View v) {
-
+        finish();
     }
 }
